@@ -1,0 +1,306 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-title" content="Gordinho Bizus">
+<meta name="theme-color" content="#0f766e">
+<title>Gordinho Bizus</title>
+<link rel="manifest" href="manifest.webmanifest">
+<link rel="icon" href="icon-192.png">
+<link rel="apple-touch-icon" href="icon-192.png">
+<style>
+:root{--bg:#f2f5f1;--sf:#fff;--tx:#18241f;--mu:#5d6b64;--pr:#0f766e;--pt:#fff;--ac:#c2410c;--bd:#d9e1db;--sk:#e3ebe6;box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]){--bg:#101815;--sf:#1a2520;--tx:#eaf1ed;--mu:#9baba3;--pr:#2dd4bf;--pt:#06231f;--ac:#fb923c;--bd:#2c3b34;--sk:#24322c;color-scheme:dark}}
+:root[data-theme="dark"]{--bg:#101815;--sf:#1a2520;--tx:#eaf1ed;--mu:#9baba3;--pr:#2dd4bf;--pt:#06231f;--ac:#fb923c;--bd:#2c3b34;--sk:#24322c;color-scheme:dark}
+*{box-sizing:border-box}
+html{scroll-padding-top:env(safe-area-inset-top,0px)}
+body{margin:0;background:var(--bg);color:var(--tx);font:500 17px/1.4 system-ui,-apple-system,Roboto,sans-serif;padding-bottom:84px}
+#h{position:sticky;top:env(safe-area-inset-top,0px);background:var(--pr);color:var(--pt);padding:14px 16px;display:flex;align-items:center;gap:12px;z-index:5}
+h1{margin:0;font-size:22px;font-weight:900;flex:1;min-width:0;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+h3{margin:14px 0 8px}
+#v{max-width:640px;margin:0 auto;padding:16px}
+.c{background:var(--sf);border:1px solid var(--bd);border-radius:14px;padding:14px;margin-bottom:10px}
+.r{display:flex;justify-content:space-between;align-items:center;gap:10px}
+.mu{color:var(--mu);font-size:14px}
+.big{font-size:26px;font-weight:900}
+.bad{color:var(--ac)}.ok{color:var(--pr)}
+button{font:700 16px system-ui,-apple-system,Roboto,sans-serif;border:0;border-radius:12px;padding:13px 16px;background:var(--pr);color:var(--pt);cursor:pointer}
+button:disabled{opacity:.4}
+button.s{background:transparent;color:var(--pr);border:2px solid var(--pr)}
+button.d{background:transparent;color:var(--ac);border:2px solid var(--ac)}
+button.b{background:rgba(255,255,255,.2);color:var(--pt);padding:8px 12px}
+button.x{padding:6px 10px;background:transparent;color:var(--ac);font-size:18px}
+.w{width:100%;margin-top:8px}
+.g{display:grid;grid-template-columns:1fr 1fr;gap:8px}
+input,select,textarea{width:100%;font:500 17px system-ui,-apple-system,Roboto,sans-serif;padding:12px;margin:6px 0;border:2px solid var(--bd);border-radius:10px;background:var(--bg);color:var(--tx)}
+label{font-size:14px;color:var(--mu);font-weight:700}
+#n{position:fixed;left:0;right:0;bottom:0;display:flex;background:var(--sf);border-top:1px solid var(--bd);padding-bottom:env(safe-area-inset-bottom,0px);z-index:5}
+#n button{flex:1;background:transparent;color:var(--mu);border-radius:0;padding:10px 2px;font-size:12px}
+#n button.on{color:var(--pr)}
+#n span{display:block;font-size:22px}
+#m{position:fixed;inset:0;background:rgba(0,0,0,.55);display:none;align-items:flex-end;justify-content:center;z-index:9}
+#m>div{background:var(--sf);width:100%;max-width:640px;max-height:90%;overflow:auto;border-radius:18px 18px 0 0;padding:18px 18px calc(18px + env(safe-area-inset-bottom,0px))}
+a{color:var(--pr);font-weight:700}
+.e{text-align:center;color:var(--mu);padding:30px 10px}
+li{margin-bottom:8px}
+/* Vender */
+.pg{display:grid;grid-template-columns:1fr 1fr;gap:8px;margin-bottom:10px}
+.pb{position:relative;background:var(--sf);color:var(--tx);border:2px solid var(--bd);text-align:left;padding:14px 12px;min-height:78px}
+.pb.on{border-color:var(--pr)}
+.pb b{display:block;font-size:16px;line-height:1.2}
+.pb .ok{font-size:15px}
+.qt{position:absolute;top:-8px;right:-6px;background:var(--pr);color:var(--pt);border-radius:999px;min-width:28px;height:28px;font-size:15px;font-weight:900;display:flex;align-items:center;justify-content:center;padding:0 6px}
+#bar{position:fixed;left:0;right:0;bottom:68px;padding:10px 16px;background:var(--sf);border-top:1px solid var(--bd);z-index:4}
+#bar>div{max-width:608px;margin:0 auto}
+.cl{padding:12px 0;border-bottom:1px solid var(--bd);cursor:pointer}
+/* Relatório */
+.mn{display:flex;align-items:center;gap:8px;margin-bottom:10px}
+.mn b{flex:1;text-align:center;font-size:19px;text-transform:capitalize}
+.mn button{padding:10px 16px}
+.kp{display:grid;grid-template-columns:1fr 1fr;gap:8px;margin-bottom:10px}
+.kp .c{margin:0}
+.kp .v{font-size:20px;font-weight:900}
+.tr{height:8px;background:var(--sk);border-radius:99px;overflow:hidden;margin-top:6px}
+.tr i{display:block;height:100%;background:var(--pr);border-radius:99px}
+.pr{padding:10px 0;border-bottom:1px solid var(--bd)}
+.pr:last-child{border-bottom:0}
+.tag{font-size:12px;font-weight:900;padding:2px 8px;border-radius:99px;background:var(--sk);color:var(--mu)}
+</style>
+</head>
+<body>
+<div id="h"></div><div id="v"></div>
+<div id="bar" style="display:none"></div>
+<div id="n"></div><div id="m"></div>
+<script>
+const $=s=>document.querySelector(s);
+let db;try{db=JSON.parse(localStorage.getItem('gb'))}catch(e){}
+db=db||{c:[],p:[],s:[]};
+const save=()=>{try{localStorage.setItem('gb',JSON.stringify(db))}catch(e){}};
+const R=v=>(+v||0).toLocaleString('pt-BR',{style:'currency',currency:'BRL'});
+const esc=s=>String(s==null?'':s).replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
+const num=v=>parseFloat(String(v).replace(',','.'))||0;
+const uid=()=>Date.now()*1000+Math.floor(Math.random()*1000);
+const fd=t=>new Date(t).toLocaleDateString('pt-BR')+' '+new Date(t).toLocaleTimeString('pt-BR',{hour:'2-digit',minute:'2-digit'});
+let tab='s',cid=null,cart=[],qk={},mo=new Date(new Date().getFullYear(),new Date().getMonth(),1);
+// Uma venda com c = id do cliente é fiado; com c = null é à vista (já paga).
+const bought=id=>db.s.filter(x=>x.c==id&&x.t=='v').reduce((a,x)=>a+x.v,0);
+const paid=id=>db.s.filter(x=>x.c==id&&x.t=='p').reduce((a,x)=>a+x.v,0);
+const bal=id=>bought(id)-paid(id);
+const openM=h=>{$('#m').innerHTML='<div>'+h+'</div>';$('#m').style.display='flex'};
+const closeM=()=>{$('#m').style.display='none'};
+$('#m').onclick=e=>{if(e.target.id=='m')closeM()};
+let fn=null;
+const ask=(msg,f)=>{fn=f;openM(`<p><b>${msg}</b></p><div class="g"><button class="s" onclick="closeM()">Cancelar</button><button class="d" onclick="closeM();fn()">Sim, apagar</button></div>`)};
+let tt;const toast=m=>{const d=document.createElement('div');d.textContent=m;d.style.cssText='position:fixed;left:50%;bottom:170px;transform:translateX(-50%);background:var(--tx);color:var(--bg);padding:10px 18px;border-radius:99px;font-weight:700;z-index:20';document.body.appendChild(d);setTimeout(()=>d.remove(),1800)};
+
+function render(){
+  const c=cid&&db.c.find(x=>x.id==cid);if(cid&&!c)cid=null;
+  $('#h').innerHTML=cid?`<button class="b" onclick="cid=null;render()">‹ Voltar</button><h1>${esc(c.n)}</h1>`:'<h1>🐷 Gordinho Bizus</h1><button class="b" onclick="cid=null;tab=\'d\';render()" aria-label="Dicas e backup">💡</button>';
+  const T=[['s','🛒','Vender'],['c','👥','Fiado'],['r','📊','Mês'],['p','📦','Produtos'],['h','🧾','Histórico']];
+  $('#n').innerHTML=T.map(t=>`<button class="${!cid&&tab==t[0]||cid&&t[0]=='c'?'on':''}" onclick="cid=null;tab='${t[0]}';render()"><span>${t[1]}</span>${t[2]}</button>`).join('');
+  $('#v').innerHTML=cid?vc(c):({s:vs,c:vl,r:vr,p:vp,h:vh,d:vd})[tab]();
+  barUI();
+  window.scrollTo(0,0);
+}
+function ent(x,nome){
+  const c=x.c!=null&&db.c.find(k=>k.id==x.c);
+  const quem=x.c==null?'À vista':(c?esc(c.n):'Cliente removido');
+  const d=x.t=='p'?'Pagamento recebido':(x.i||[]).map(i=>i.q+'× '+esc(i.n)).join(', ');
+  return `<div class="c"><div class="r"><div><b>${nome?quem+' · ':''}${x.t=='p'?'<span class="ok">+ '+R(x.v)+'</span>':R(x.v)}</b>${!nome&&x.t=='v'?' <span class="tag">fiado</span>':''}<div class="mu">${fd(x.d)}</div><div class="mu">${d}</div></div><button class="x" onclick="delS(${x.id})" aria-label="Apagar">🗑</button></div></div>`;
+}
+
+/* ---------- VENDER (venda rápida) ---------- */
+function vs(){
+  if(!db.p.length)return '<div class="e">Cadastre seus produtos primeiro.<br>Depois é só tocar neles para vender.</div><button class="w" onclick="tab=\'p\';render()">Ir para Produtos</button>';
+  const hoje=dayTot(),old=db.s.length&&(!db.bk||Date.now()-db.bk>7*864e5);
+  return `${old?'<div class="c" style="border-color:var(--ac)"><div class="r"><span class="mu"><b class="bad">Faça o backup da semana.</b> Os dados ficam só neste celular.</span><button class="d" style="padding:8px 12px" onclick="bk()">Backup</button></div></div>':''}<div class="mu" style="margin-bottom:8px">Toque no produto para somar. Hoje: <b>${R(hoje)}</b></div>
+  <div class="pg">${db.p.map(p=>`<button class="pb${qk[p.id]?' on':''}" onclick="qAdd(${p.id},1)">${qk[p.id]?`<span class="qt">${qk[p.id]}</span>`:''}<b>${esc(p.n)}</b><span class="ok">${R(p.v)}</span></button>`).join('')}</div>
+  <div style="height:150px"></div>`;
+}
+function dayTot(){const d=new Date();d.setHours(0,0,0,0);return db.s.filter(x=>x.t=='v'&&x.d>=+d).reduce((a,x)=>a+x.v,0)}
+function qItems(){return db.p.filter(p=>qk[p.id]).map(p=>({id:p.id,n:p.n,p:p.v,q:qk[p.id]}))}
+function qAdd(id,n){qk[id]=Math.max(0,(qk[id]||0)+n);if(!qk[id])delete qk[id];render()}
+function barUI(){
+  const b=$('#bar');
+  if(cid||tab!='s'||!db.p.length){b.style.display='none';return}
+  const it=qItems(),t=it.reduce((a,i)=>a+i.p*i.q,0),on=it.length>0;
+  b.style.display='block';b.style.bottom=$('#n').offsetHeight+'px';
+  b.innerHTML=`<div>${on?`<div class="mu" style="margin-bottom:6px">${it.map(i=>i.q+'× '+esc(i.n)).join(', ')} · <a href="#" onclick="event.preventDefault();qEdit()">corrigir</a></div>`:''}
+  <div class="r" style="margin-bottom:8px"><b>Total</b><span class="big">${R(t)}</span></div>
+  <div class="g"><button ${on?'':'disabled'} onclick="qFin(null)">💵 Pago agora</button><button class="s" ${on?'':'disabled'} onclick="qFiado()">📒 Fiado</button></div></div>`;
+}
+function qEdit(){
+  const it=qItems();
+  openM(`<h3>Corrigir venda</h3>${it.map(i=>`<div class="r" style="padding:8px 0"><span>${esc(i.n)}</span><span style="display:flex;align-items:center;gap:6px"><button class="s" style="padding:6px 14px" onclick="qAdd(${i.id},-1);qEdit()">−</button><b style="min-width:24px;text-align:center">${qk[i.id]||0}</b><button class="s" style="padding:6px 14px" onclick="qAdd(${i.id},1);qEdit()">+</button></span></div>`).join('')||'<div class="mu">Venda vazia.</div>'}
+  <div class="g" style="margin-top:12px"><button class="d" onclick="qk={};closeM();render()">Limpar tudo</button><button onclick="closeM()">Pronto</button></div>`);
+}
+function qFiado(){
+  const cs=[...db.c].sort((a,b)=>a.n.localeCompare(b.n));
+  openM(`<h3>Fiado para quem?</h3>${cs.map(c=>`<div class="cl r" onclick="qFin(${c.id})"><b>${esc(c.n)}</b><span class="mu">deve ${R(bal(c.id))}</span></div>`).join('')||'<div class="mu">Nenhum cliente cadastrado.</div>'}
+  <label style="display:block;margin-top:14px">Ou cadastre agora</label><input id="a" placeholder="Nome do cliente"><button class="s w" onclick="qNovo()">+ Cadastrar e lançar fiado</button>`);
+}
+function qNovo(){const n=$('#a').value.trim();if(!n){$('#a').focus();return}const k=uid();db.c.push({id:k,n,f:''});qFin(k)}
+function qFin(c){
+  const it=qItems();if(!it.length)return;
+  db.s.push({id:uid(),c,t:'v',d:Date.now(),v:it.reduce((a,i)=>a+i.p*i.q,0),i:it.map(i=>({n:i.n,q:i.q,p:i.p}))});
+  qk={};save();closeM();render();toast(c==null?'Venda salva ✓':'Fiado lançado ✓');
+}
+
+/* ---------- RELATÓRIO DO MÊS ---------- */
+function mRange(d){const a=+d,b=+new Date(d.getFullYear(),d.getMonth()+1,1);return x=>x.d>=a&&x.d<b}
+function mStats(d){
+  const inM=mRange(d),ss=db.s.filter(inM);
+  const vv=ss.filter(x=>x.t=='v');
+  const st={tot:0,av:0,fi:0,rec:0,n:vv.length,itens:0,prod:{}};
+  vv.forEach(x=>{st.tot+=x.v;if(x.c==null)st.av+=x.v;else st.fi+=x.v;
+    (x.i||[]).forEach(i=>{const k=i.n;const p=st.prod[k]||(st.prod[k]={n:i.n,q:0,v:0});p.q+=i.q;p.v+=i.q*i.p;st.itens+=i.q})});
+  st.rec=ss.filter(x=>x.t=='p').reduce((a,x)=>a+x.v,0);
+  st.list=Object.values(st.prod).sort((a,b)=>b.v-a.v);
+  return st;
+}
+const mName=d=>d.toLocaleDateString('pt-BR',{month:'long',year:'numeric'});
+function mGo(n){mo=new Date(mo.getFullYear(),mo.getMonth()+n,1);render()}
+function vr(){
+  const st=mStats(mo),pv=mStats(new Date(mo.getFullYear(),mo.getMonth()-1,1));
+  const now=new Date(),cur=mo.getFullYear()==now.getFullYear()&&mo.getMonth()==now.getMonth();
+  const aReceber=db.c.reduce((a,c)=>a+Math.max(0,bal(c.id)),0);
+  const max=st.list.length?st.list[0].v:1;
+  let cmp='';
+  if(pv.tot>0){const p=Math.round((st.tot-pv.tot)/pv.tot*100);cmp=`<div class="mu">${p>=0?'▲':'▼'} ${Math.abs(p)}% vs. mês anterior (${R(pv.tot)})${cur?' · mês ainda em andamento':''}</div>`}
+  return `<div class="mn"><button class="s" onclick="mGo(-1)" aria-label="Mês anterior">‹</button><b>${mName(mo)}</b><button class="s" onclick="mGo(1)" ${cur?'disabled':''} aria-label="Próximo mês">›</button></div>
+  <div class="c"><div class="mu">Total vendido no mês</div><div class="big">${R(st.tot)}</div><div class="mu">${st.n} venda${st.n==1?'':'s'} · ${st.itens} ${st.itens==1?'item':'itens'}</div>${cmp}</div>
+  <div class="kp">
+    <div class="c"><div class="mu">Vendido à vista</div><div class="v ok">${R(st.av)}</div></div>
+    <div class="c"><div class="mu">Vendido no fiado</div><div class="v bad">${R(st.fi)}</div></div>
+    <div class="c"><div class="mu">Fiado recebido no mês</div><div class="v ok">${R(st.rec)}</div></div>
+    <div class="c"><div class="mu">Entrou no bolso</div><div class="v">${R(st.av+st.rec)}</div></div>
+  </div>
+  <div class="c"><div class="r"><div class="mu">Fiado em aberto hoje (todos os clientes)</div><b class="${aReceber>0?'bad':'ok'}">${R(aReceber)}</b></div></div>
+  <h3>Por produto</h3>
+  <div class="c">${st.list.length?st.list.map(p=>`<div class="pr"><div class="r"><b>${esc(p.n)}</b><b>${R(p.v)}</b></div><div class="r mu"><span>${p.q} vendido${p.q==1?'':'s'}</span><span>${st.tot?Math.round(p.v/st.tot*100):0}% do mês</span></div><div class="tr"><i style="width:${Math.max(2,p.v/max*100)}%"></i></div></div>`).join(''):'<div class="e" style="padding:14px">Nenhuma venda neste mês.</div>'}</div>
+  ${st.n?'<button class="s w" onclick="mShare()">📤 Enviar resumo do mês</button>':''}`;
+}
+function mShare(){
+  const st=mStats(mo);
+  const t=`Gordinho Bizus · ${mName(mo)}\nTotal vendido: ${R(st.tot)} (${st.n} vendas)\nÀ vista: ${R(st.av)}\nFiado lançado: ${R(st.fi)}\nFiado recebido: ${R(st.rec)}\n\nPor produto:\n`+st.list.map(p=>`• ${p.n}: ${p.q} un. = ${R(p.v)}`).join('\n');
+  if(navigator.share)navigator.share({text:t}).catch(()=>{});
+  else (navigator.clipboard?navigator.clipboard.writeText(t):Promise.reject()).then(()=>toast('Resumo copiado ✓')).catch(()=>openM(`<h3>Resumo</h3><textarea rows="10">${esc(t)}</textarea><button class="w" onclick="closeM()">Fechar</button>`));
+}
+
+/* ---------- FIADO (clientes) ---------- */
+function vl(){
+  const tot=db.c.reduce((a,c)=>a+bal(c.id),0);
+  let h=`<div class="c"><div class="mu">Total a receber de todos</div><div class="big bad">${R(tot)}</div></div>`;
+  h+=db.c.length?[...db.c].sort((a,b)=>a.n.localeCompare(b.n)).map(c=>`<div class="c" onclick="cid=${c.id};render()"><div class="r"><div><b>${esc(c.n)}</b><div class="mu">${esc(c.f||'Sem telefone')}</div></div><div style="text-align:right"><div class="mu">Falta pagar</div><b class="${bal(c.id)>0?'bad':'ok'}">${R(bal(c.id))}</b></div></div></div>`).join(''):'<div class="e">Nenhum cliente de fiado ainda.<br>Toque em “Novo cliente” para começar.</div>';
+  return h+'<button class="w" onclick="addC()">+ Novo cliente</button>';
+}
+function vc(c){
+  const hs=db.s.filter(x=>x.c==c.id).sort((a,b)=>b.d-a.d);
+  const tel=(c.f||'').replace(/\D/g,'');
+  return `<div class="c"><div class="r"><div class="mu">Total comprado</div><b>${R(bought(c.id))}</b></div><div class="r"><div class="mu">Já pagou</div><b class="ok">${R(paid(c.id))}</b></div><div class="r" style="margin-top:6px"><div>Falta pagar</div><div class="big ${bal(c.id)>0?'bad':'ok'}">${R(bal(c.id))}</div></div></div>
+  <div class="c"><div class="mu">Contato</div><b>${esc(c.f||'Sem telefone')}</b>${tel?`<div class="g" style="margin-top:8px"><a href="tel:${tel}"><button class="s w">📞 Ligar</button></a><a href="https://wa.me/${tel.length<=11?'55'+tel:tel}" target="_blank"><button class="s w">💬 WhatsApp</button></a></div>`:''}</div>
+  <div class="g"><button onclick="newSale()">🛒 Nova venda</button><button class="s" onclick="pay()">💵 Receber</button></div>
+  <h3>Histórico</h3>${hs.length?hs.map(x=>ent(x,0)).join(''):'<div class="e">Sem compras registradas.</div>'}
+  ${hs.length?`<button class="d w" onclick="ask('Apagar todo o histórico de ${esc(c.n)}? As vendas dele também saem do relatório do mês.',()=>{db.s=db.s.filter(x=>x.c!=${c.id});save();render()})">Apagar histórico deste cliente</button>`:''}
+  <button class="d w" onclick="ask('Excluir ${esc(c.n)} e todo o histórico? As vendas dele também saem do relatório do mês.',()=>{db.s=db.s.filter(x=>x.c!=${c.id});db.c=db.c.filter(x=>x.id!=${c.id});cid=null;save();render()})">Excluir cliente</button>
+  <button class="s w" onclick="addC(${c.id})">Editar dados</button>`;
+}
+
+/* ---------- PRODUTOS / HISTÓRICO / DICAS ---------- */
+function vp(){
+  return (db.p.length?db.p.map(p=>`<div class="c"><div class="r"><div><b>${esc(p.n)}</b><div class="ok"><b>${R(p.v)}</b></div></div><div><button class="x" style="color:var(--pr)" onclick="addP(${p.id})" aria-label="Editar">✏️</button><button class="x" onclick="ask('Excluir ${esc(p.n)}? As vendas já feitas continuam no relatório.',()=>{db.p=db.p.filter(x=>x.id!=${p.id});delete qk[${p.id}];save();render()})" aria-label="Excluir">🗑</button></div></div></div>`).join(''):'<div class="e">Nenhum produto ainda.<br>Cadastre o nome e o valor de cada um.<br><span class="mu">Ex.: Coca lata, Coxinha, Brigadeiro.</span></div>')+'<button class="w" onclick="addP()">+ Novo produto</button>';
+}
+function vh(){
+  const hs=[...db.s].sort((a,b)=>b.d-a.d);
+  return hs.length?hs.map(x=>ent(x,1)).join(''):'<div class="e">Nenhuma venda registrada ainda.</div>';
+}
+function vd(){
+  return `<div class="c"><b>Dicas para usar melhor</b><ol>
+  <li>Cadastre os produtos primeiro. Assim cada venda leva só dois toques.</li>
+  <li>Na aba <b>Vender</b>, toque no produto (toque de novo para somar mais um) e depois em <b>Pago agora</b> ou <b>Fiado</b>.</li>
+  <li>Registre a venda na hora, antes de entregar. Deixar para depois é como se perdem os fiados.</li>
+  <li>Use “Receber” a cada pagamento de fiado, mesmo parcial. O saldo fica sempre certo.</li>
+  <li>Na aba <b>Mês</b> você vê quanto vendeu, o que mais saiu e quanto ficou no fiado. Use as setas para ver meses anteriores.</li>
+  <li>Salve o telefone com DDD para usar os botões de ligar e WhatsApp e cobrar com educação.</li>
+  <li>Toda semana, abra Fiado e veja quem tem o maior saldo. Cobre esses primeiro.</li>
+  <li>Faça backup toda semana, abaixo. Os dados ficam só neste celular.</li>
+  <li>Instale o app: no Android, abra o link no Chrome › menu ⋮ › <b>Instalar app</b> (ou Adicionar à tela inicial). Depois disso ele abre pelo ícone 🐷 e funciona sem internet.</li></ol></div>
+  <div class="c"><b>Backup dos dados</b><div class="mu">Os dados ficam só neste celular. Se ele quebrar, for roubado ou o app for apagado, as vendas somem. Toque em “Fazer backup” e mande o arquivo para você mesmo no WhatsApp ou salve no Google Drive.</div>
+  <div class="mu" style="margin-top:6px">Último backup: <b>${db.bk?fd(db.bk):'nunca'}</b></div>
+  <button class="w" onclick="bk()">📤 Fazer backup</button><button class="s w" onclick="bkFile()">Só salvar em Downloads</button><button class="s w" onclick="rs()">Restaurar backup</button></div>`;
+}
+function addC(id){
+  const c=id?db.c.find(x=>x.id==id):{n:'',f:''};
+  openM(`<h3>${id?'Editar':'Novo'} cliente</h3><label>Nome</label><input id="a" value="${esc(c.n)}"><label>Telefone com DDD</label><input id="b" type="tel" value="${esc(c.f)}"><button class="w" onclick="sC(${id||0})">Salvar cliente</button>`);
+}
+function sC(id){
+  const n=$('#a').value.trim(),f=$('#b').value.trim();if(!n){$('#a').focus();return}
+  if(id){const c=db.c.find(x=>x.id==id);c.n=n;c.f=f}else{const k=uid();db.c.push({id:k,n,f})}
+  save();closeM();render();
+}
+function addP(id){
+  const p=id?db.p.find(x=>x.id==id):{n:'',v:''};
+  openM(`<h3>${id?'Editar':'Novo'} produto</h3><label>Nome do produto</label><input id="a" value="${esc(p.n)}"><label>Valor (R$)</label><input id="b" inputmode="decimal" value="${p.v}"><button class="w" onclick="sP(${id||0})">Salvar produto</button>`);
+}
+function sP(id){
+  const n=$('#a').value.trim(),v=num($('#b').value);if(!n||v<=0){alert('Informe o nome e um valor maior que zero.');return}
+  if(id){const p=db.p.find(x=>x.id==id);p.n=n;p.v=v}else db.p.push({id:uid(),n,v});
+  save();closeM();render();
+}
+function newSale(){
+  if(!db.p.length){openM('<p>Cadastre pelo menos um produto antes de vender.</p><button class="w" onclick="closeM();tab=\'p\';cid=null;render()">Ir para Produtos</button>');return}
+  cart=[];cartUI();
+}
+function cartUI(){
+  const t=cart.reduce((a,i)=>a+i.p*i.q,0);
+  openM(`<h3>Nova venda no fiado</h3><label>Produto</label><select id="a">${db.p.map(p=>`<option value="${p.id}">${esc(p.n)} · ${R(p.v)}</option>`).join('')}</select><label>Quantidade</label><input id="b" type="number" inputmode="numeric" min="1" value="1"><button class="s w" onclick="addI()">+ Adicionar à venda</button>
+  <div style="margin-top:12px">${cart.map((i,k)=>`<div class="r"><span>${i.q}× ${esc(i.n)}</span><span><b>${R(i.p*i.q)}</b> <button class="x" onclick="cart.splice(${k},1);cartUI()">✕</button></span></div>`).join('')||'<div class="mu">Nenhum item ainda.</div>'}</div>
+  <div class="r" style="margin:12px 0"><b>Total da venda</b><span class="big">${R(t)}</span></div>
+  <div class="g"><button class="s" onclick="closeM()">Cancelar</button><button onclick="fin()">Salvar venda</button></div>`);
+}
+function addI(){
+  const p=db.p.find(x=>x.id==$('#a').value),q=Math.max(1,parseInt($('#b').value)||1);
+  const e=cart.find(i=>i.id==p.id);if(e)e.q+=q;else cart.push({id:p.id,n:p.n,p:p.v,q});
+  cartUI();
+}
+function fin(){
+  if(!cart.length){alert('Adicione pelo menos um item.');return}
+  db.s.push({id:uid(),c:cid,t:'v',d:Date.now(),v:cart.reduce((a,i)=>a+i.p*i.q,0),i:cart.map(i=>({n:i.n,q:i.q,p:i.p}))});
+  save();closeM();render();
+}
+function pay(){
+  openM(`<h3>Receber pagamento</h3><div class="mu">Falta pagar: ${R(bal(cid))}</div><label>Valor recebido (R$)</label><input id="a" inputmode="decimal" value="${bal(cid)>0?bal(cid).toFixed(2).replace('.',','):''}"><button class="w" onclick="sPay()">Salvar pagamento</button>`);
+}
+function sPay(){
+  const v=num($('#a').value);if(v<=0){alert('Informe um valor maior que zero.');return}
+  db.s.push({id:uid(),c:cid,t:'p',d:Date.now(),v});save();closeM();render();
+}
+function delS(id){ask('Apagar este registro?',()=>{db.s=db.s.filter(x=>x.id!=id);save();render()})}
+const bkName=()=>'backup-gordinho-bizus-'+new Date().toISOString().slice(0,10)+'.json';
+const bkDone=()=>{db.bk=Date.now();save()};
+async function bk(){
+  const t=JSON.stringify(db),f=new File([t],bkName(),{type:'application/json'});
+  try{if(navigator.canShare&&navigator.canShare({files:[f]})){await navigator.share({files:[f],title:'Backup Gordinho Bizus'});bkDone();toast('Backup enviado ✓');render();return}}catch(e){if(e&&e.name=='AbortError')return}
+  bkFile();
+}
+function bkFile(){
+  const a=document.createElement('a');a.href=URL.createObjectURL(new Blob([JSON.stringify(db)],{type:'application/json'}));a.download=bkName();document.body.appendChild(a);a.click();a.remove();
+  bkDone();toast('Backup salvo em Downloads ✓');render();
+}
+function rs(){
+  openM('<h3>Restaurar backup</h3><div class="mu">Escolha o arquivo de backup (backup-gordinho-bizus-….json). Isso substitui os dados atuais deste celular.</div><input type="file" id="f" accept=".json,application/json,text/plain"><label>Ou cole aqui o texto do backup do app antigo</label><textarea rows="4" id="a"></textarea><button class="w" onclick="doRs()">Restaurar</button>');
+}
+function doRs(){
+  const f=$('#f').files[0],tx=$('#a').value.trim();if(!f&&!tx){alert('Escolha o arquivo ou cole o texto do backup.');return}
+  (f?f.text():Promise.resolve(tx)).then(t=>{const d=JSON.parse(t);if(!d.c||!d.p||!d.s)throw 0;db=d;qk={};save();closeM();render();toast('Backup restaurado ✓')}).catch(()=>alert('Backup inválido.'));
+}
+render();
+// Funciona sem internet depois da 1ª abertura (service worker) e pede ao Android para não apagar os dados.
+if('serviceWorker' in navigator&&location.protocol.startsWith('http'))navigator.serviceWorker.register('sw.js').catch(()=>{});
+if(navigator.storage&&navigator.storage.persist)navigator.storage.persist().catch(()=>{});
+</script>
+</body>
+</html>
